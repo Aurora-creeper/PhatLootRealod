@@ -1,0 +1,354 @@
+##########################################################################################
+#  _____  _           _   _                 _       _____      _                     _   #
+# |  __ \| |         | | | |               | |     |  __ \    | |                   | |  #
+# | |__) | |__   __ _| |_| |     ___   ___ | |_ ___| |__) |___| |     ___   __ _  __| |  #
+# |  ___/| '_ \ / _` | __| |    / _ \ / _ \| __/ __|  _  // _ \ |    / _ \ / _` |/ _` |  #
+# | |    | | | | (_| | |_| |___| (_) | (_) | |_\__ \ | \ \  __/ |___| (_) | (_| | (_| |  #
+# |_|    |_| |_|\__,_|\__|______\___/ \___/ \__|___/_|  \_\___|______\___/ \__,_|\__,_|  #
+#                                                                                        #
+#                                Config file for PhatLoots                               #
+#                             这是 插件 PhatLootsReload 的配置文件                       #
+#                                 Plugin made by Codisimus                               #
+#                                  插件原作者为：Codisimus                               #
+#                               Plugin reloaded by Aurora5090                            #
+#                                重置插件的作者为:极光creeper                            #
+##########################################################################################
+
+                                 
+                                 
+                                 
+#------------------# 配置你的Loot链接 #------------------#
+
+#绝大多数功能都可以在这个配置文件里被禁用或修改阈值
+#你可以通过禁用你不需要的功能来减少占用
+#每项的注释大多都在上方
+#注释中提到的‘掉落loot’均会按照你配置的几率进行掉落
+#注释中提到的‘箱子’仅是为了方便表述 实际上箱子可以替换为任何方块进行刷新
+
+
+#如果物品有过多lore的话 开启LootBags功能会导致服务器滞后
+LootBags: false
+#如果你开启了Lootbags功能 则请确保玩家没有办法使用铁砧或其他方式修改物品名称
+#如果上述两个功能你全都要 那么请将下方的秘钥修改为比 &3&8&4&r&0 更复杂的颜色符号 并且不要将其告诉其他玩家
+#显然本配置会被其他用户从mcbbs下载 那么大家都会看到&3&8&4&r&0这个例子 玩家就可以轻易试出这个秘钥 所以请你自己再换一个(笑
+LootBagKey: '&r&0'
+
+#启用DispenserLoot可以让你将发射器、投掷器作为箱子来刷新物品
+#但是如果服务器有很多红石的话 这同样会导致滞后
+DispenserLoot: true
+
+#启用本功能来调用生物[包括mythicmobs] 的(hook) 使得本插件可以让生物的掉落物也能刷新指定的loot
+#在服务器生物(实体)过多的情况下启用MobLoot会导致滞后
+#举个例子，这些都是实体： 玩家 僵尸 苦力怕 骷髅 蜘蛛 盔甲架(浮空字)
+MobDropLoot: true
+##e.g. ZombieSpawn, SkeletonSpawn, VillagerSpawn
+MobSpawnLoot: true
+#(上方的这些可以在配置偏下方的地方详细设置)
+
+#如果你的服务器就启用了一个世界 那么请把下方的都设置为false
+#如果有多个世界 你可以指定某些世界的生物刷新、掉落指定的loot. 
+#例如：Zombie@MainWorld(选择器指定了MainWorld[世界]里所有的僵尸), Zombie@DungeonWorld(选择器指定了DungeonWorld[世界]里所有的僵尸)
+WorldMobDropLoot: true
+##e.g. ZombieSpawn@MainWorld, ZombieSpawn@DungeonWorld
+WorldMobSpawnLoot: true
+#(上方的这些可以在配置偏下方的地方详细设置)
+
+#针对可以选择安装的支持项插件RegionOwn与WorldGuard(他们都可以选中并设定一个区域，本插件与他们有hook)
+#虽然你在配置这里能将其设置为true，但如果没有检测到上述两个插件的话 本功能不会启用
+#例如：Zombie@Graveyard(选择器指定了Graveyard[区域]里所有的僵尸), Spider@Nest(选择器指定了Nest[区域]里所有的蜘蛛)
+#尽量使得[区域]与[世界]的名字不要重复
+RegionMobDropLoot: true
+RegionMobSpawnLoot: true
+#(上方的这些可以在配置偏下方的地方详细设置)
+
+#众所周知僵尸 骷髅 村民等都有很多不同的形态, 例如：小僵尸、凋零骷髅、牧师职业的村民，小村民 等等
+#启用MobTypes 可以使得插件对生物的形态进行区分 也使得你可以分别设置他们的掉落物loot
+MobTypes: true
+
+#启用NamedMobs 可以让某一种名字的生物掉落你指定的loot
+#名字例如： ZombieBoss, Skeletor, Paul the Priest
+NamedMobs: true
+
+#启用本功能后 玩家在水中钓鱼时也会有几率钓出你指定的loot物品
+#e.g. Fishing  //译者完全没看出原文中这个举例的意义233
+FishingLoot: true
+
+#此选项需要先安装：可选支持项 Votifier插件
+#与Votifier挂钩的loot箱子能够在被打开时让玩家投票选择 以修改他们得到的loot物品
+#与Votifier挂钩的loot箱子必须被设置为 "autoloot" 状态
+#[注意：autoloot并不是自动刷新,而是在打开loot时，箱子内的物品会自动存入玩家的背包] 
+#指令：/loot autoloot <loot名字> <true|false> 
+#该loot箱子内应该刷新尽量少的物品 并且应尽量避免很多玩家同时进行投票 不然服务器会严重滞后(仅重置者测试得出)
+#e.g. Vote    // 举 例 毫 无 意 义
+VotifierLoot: false
+
+#亮点功能！并不只有箱子可以被掠夺/打开！
+#任何[方块]都可以被链接(link)作为loot的刷新位置
+#你可以自行在下面添加方块或移除方块 移除服务器内不作为刷新点的方块可以减少占用
+Blocks:
+    - Chest
+    - Trapped Chest
+    - Ender Chest
+    - Dispenser
+    - Dropper
+    - Bookshelf
+
+#在这里设置autolink功能 本功能可以让指定的某个世界内所有方块刷新指定的loot
+#这里下面设置的方块[不]需要在上方的blocks里设置
+#我将下方的默认配置注释掉了 以免插件刚装进服里以后会直接出现腐竹不想见到的麻烦情况
+#要开启此功能，请先删除autolink右边的那个空方括号[] 
+#随后再把下面的注释 [#警号]删掉
+#请注意是英文冒号+空格的形式
+AutoLink: []
+#    all:
+#        Melon Block: melons
+#    world:
+#        Bookshelf: books
+#    <世界名>:
+#        <方块名>: <链接的loot名>
+
+
+
+#------------------# 配置你的生物Loot链接 #------------------#
+
+#如果你将ReplaceMobLoot设置为true 那么生物原本的掉落物将会直接消失(例如[被设置的]僵尸不会掉落腐肉)
+#反之 将ReplaceMobLoot设置为false 那么生物在掉落loot物品的基础上还会掉落原版物品
+#但不论是上述哪种情况 [没有被设置的]生物(即没有phatloot文件) 生物的掉落物会保持原版
+ReplaceMobLoot: true
+
+
+#只有当玩家杀死生物时才会掉落loot和经验(即 摔死 窒息 烧死 等都不会掉任何loot物品或经验)
+#下面这个是loot
+OnlyDropLootWhenKilledByPlayer: false
+#下面这个是经验
+OnlyDropExpWhenKilledByPlayer: false
+
+
+#在这里设定掉落loot的生物掉落loot的几率 但是loot内物品还会再按照你设定的几率进行随机掉落(值为0 - 100)
+MobLootDropPercentage: 20
+
+
+#掠夺附魔的设置
+#每高一级的掠夺属性都会有额外几率掉落loot物品
+#举个例子: 当你设置LootingBonusPerLevel = 5
+#         且loot本身绑定在僵尸身上 该loot每次有 50% 几率掉落1个腐肉
+#         这个僵尸被掠夺4的武器杀死后 依据配置文件进行掉率计算
+#         1个腐肉的掉落几率提升至了70%
+#         计算公式：50%[loot的设置] + (5%[LootingBonusPerLevel的数值] x 4[武器的掠夺等级])
+#  (无注释)计算公式：50% + (5% x 4 levels)
+#         你只能通过重新编译来修改计算公式
+LootingBonusPerLevel: 5
+
+#本插件可调用 WorldGuard 与 RegionTools 两个选择区域的插件
+#如果RegionPlugin设置为auto，将使用第一个兼容的插件
+##如果安装了多个区域插件，则只需更改此设置。
+RegionPlugin: auto
+#调用后才会使用到RegionGroup
+RegionGroup:
+#    <世界名>:
+#        <生物>: <loot>
+
+
+
+#------------------# 自定义提升劫掠优势权限 #------------------#
+
+#当玩家劫掠一个你设置的loot时 拥有某些特殊权限会提高loot内刷新出稀有物品的几率
+#loot内物品的数量和种类(包括exp等)都会有所提升
+#基于权限的加成会相互堆叠(会在loot正常刷新物品的基础上再多刷新一点物品)
+#在下方的[]之间输入数字 并用逗号+空格分隔他们以注册这些节点
+#例如. 添加 [10, 20, 0.5](支持小数)后 玩家如果拥有 phatloots.bonus.10 权限
+#会增加额外的10%到每个loot物品内 这会直接导致刷新更多物品和种类
+LootBonusPermissions: []
+
+
+
+#------------------# 语言文字 #------------------#
+
+#玩家与管理在游戏中的提示都可以在这里修改
+# ''括出的空白消息不会被显示
+#支持颜色符号&
+#占位符 <time> 代表箱子会在{time}(时,分,秒都会显示)后刷新的时间
+#占位符 <item> 代表你从箱子里找到的物品{item}的名称
+#占位符 <amount> 代表金钱/经验/物品的数量。
+Messages:
+    Permission: '&4你没有权限.'
+    ExperienceLooted: '&5在打开箱子后，你获得了 &6<amount>&5 点经验.'
+    MoneyLooted: '&5在打开箱子后，你获得了 &6<amount>&5 金币.'
+    MoneyCharged: '&5通过搜索这个箱子，你获得了 &6<amount>&5 金币.'
+    InsufficientFunds: '&4你必须拥有 &6<amount>&4 才能打开这个箱子.'
+    AutoLoot: '&5你从箱子里找到了 &6<item>&5 .'
+    Overflow: '&5这个箱子再次盈满了战利品!'
+    ChestTimeRemaining: '&4您必须等待&6<time>&4才能收到更多的战利品！'
+    EmptyChestTimeRemaining: '&4您必须等待&6<time>&4才能收到更多的战利品!'
+    CommandTimeRemaining: '&4您必须等待&6<time>&4才能收到更多的战利品!'
+    DispenserTimeRemaining: ''
+    MobTimeRemaining: '&您必须等待&6<time>&4才能收到更多的战利品!'
+    MobDroppedMoney: '&5击杀怪物后 你获得了 &6<amount> 金币.'
+    MobDroppedItem: ''
+    MobDroppedExperience: ''
+    LootMessage: ''
+    LootBroadcast: ''
+
+#PhatLoot 的箱子将会在gui的顶部显示刷新的loot的名字
+#占位符 <name> 会指定替换为loot的名字 你也可以使用&来修改颜色
+ChestName: '&6<name>'
+
+#伤害计算（可以设定范围）可以被添加到刷新出的物品的lore上
+#要做到这一点，请在某一行lore上添加下面的标记(你可以在SimpleLoot文件中找到例子) 如 <dam><holy>
+#当然 UseDamageTags 先要设置为true
+UseDamageTags: true
+<dam>: '&5<amount> 点伤害'
+<holy>: '&6+<amount> 点神圣伤害'
+<fire>: '&4+<amount> 点火焰伤害'
+<bug>: '&2+<amount> 点节肢杀手伤害'
+<thorns>: '&8<chance>% 的几率造成 1-4 点伤害'
+<def>: '&5<amount> 点防御'
+<firedef>: '&4+<amount> 点火焰防御'
+<rangedef>: '&2+<amount> 点远程防御'
+<blastdef>: '&1+<amount> 点爆炸防御'
+<falldef>: '&b+<amount> 点摔落防御'
+
+#可选支持项：MythicDrops插件
+#如果使用了MythicDrops，所有物品会在lore中显示他们的等级(tire)。
+#默认是黑色的 以此来隐藏lore
+#如果您希望使其或多或少可见，可以在下面设置颜色。
+#多个颜色代码堆叠也能有效如 '&k&0' or '&l&n&d'
+MythicDropsTierColor: '&0'
+
+
+#------------------# 基础配置 #------------------#
+
+#在这里设置默认loot后 插件会直接全局应用 但是你仍然可以为单独的每个loot修改配置
+#这里设置的每一项都可以在设置完成后根据phatloot再次进行更改
+Defaults:
+    #刷新时间(现实时间)
+    #将days设置为-1可以让箱子永远不刷新
+    ResetTime:
+        Days: 1
+        Hours: 0
+        Minutes: 0
+        Seconds: 0
+
+
+    #若将AutoLoot设置为true 当玩家右键绑定了loot的箱子后 箱子里的物品会直接放入玩家的背包
+    #如果背包满了的话 多出来的物品将会留在箱子里 而不是掉地上
+    AutoLoot: false
+
+    #是否所有玩家都能获得独立的战利品
+    #当这里设置为false，每次刷新后，每个玩家打开loot箱子后都会看到相同的物品，且每个玩家都可以拿一份出来
+    #(如果为-1则只能获取一次物品,如果设置了刷新 每个玩家在每次刷新后打开的箱子里物品是一样的)
+    #当这里设置为true，每个玩家将会一同争夺loot箱子里的东西，玩家A拿了以后，B就没法再拿一份了(即和原版一样)
+    GlobalReset: false
+
+
+    #请注意，只有将上方的GlobalReset设置为true，下方该配置才有用
+    #如果你将GlobalReset和GlobalReset同时设置为true，当loot箱子内的物品被抢完以后，箱子会直接消失
+    #(如果该箱子可以刷新的话)在下一次刷新时，这个箱子会再次出现
+    BreakAndRespawn: false
+
+
+    #如果设置为true，则刷新时间将会四舍五入为0
+    #如果你的服务器上有loot每小时/每天都能领取 这个选项兴许有用
+    #举个例子吧.
+    #你的刷新时间 ResetTime = 1 Day, 0 Hours, 0 Minutes, and 0 Seconds
+    #且   RoundDownTime = true
+    #    玩家实际上在第 Day 100, Hour 20, Minute 37, and Second 49 时打开了箱子
+    #    ResetTime中对应为0的值将会向下舍去
+    #    也就是玩家被插件认为在 Day 100, Hour 0, Minute 0, and Second 0 时打开了箱子
+    #    这样的话 服务器就会变成每天凌晨/准点就会刷新一次箱子
+    #再举一个例子 ResetTime = 0 Day, 0 Hours, 5 Minutes, and 0 Seconds
+    #    然后 就只有秒值会向下取整（分钟以及分钟左边的值不会取整）
+    RoundDownTime: false
+
+
+    #如果你有魔兽世界(wow)的基础认知 本功能会比较容易理解
+    #(在没有人指定roll的物品时)每次roll物品会roll出下方数值的物品
+    #例如：一个loot中共有5个物品，且ItemsPerColl = 2 前两个roll的玩家会随机获取其中的两个物品 
+    #而还有一个玩家不管roll出什么 也只能获得一个物品(笑)
+    #将ItemsPerColl设置为0会让每个物品都要被roll一次来分配
+    ItemsPerColl: 1
+
+
+
+#------------------# 其他配置 #------------------#
+
+#只有拥有特定权限的插件才能打开特定的loot
+#例如拥有'phatloots.loot.Epic' 或 'phatloots.loot.*'(这个是通配符) 权限的玩家才能打开loot名为Epic的箱子
+#你可以在下面添加 被权限限制开启的loot，但是在"-"前请使用空格而不是tab
+#启用RestrictAll后，所有loot都需要对应的权限才能开启
+RestrictAll: false
+#如果RestrictAll=false 你可以在下面配置哪些loot会因权限受限而无法打开
+#例如你在下方设置了"Rare"这个loot
+#玩家需要对应的phatloots.loot.Rare权限才能打开这个loot来搜刮物品
+RestrictedPhatLoots:
+    - 'PhatLoot1'
+    - 'PhatLoot2'
+    - 'PhatLoot3'
+#    - 'Rare'
+#    - 'Epic'
+#    - 'Donator'
+
+
+#当生成的物品判定评级(即上方提到的Tire)高于下方设置时，会在.txt里自动记录该物品
+MinimumTierNotification: 100
+
+
+#此设置仅在您安装了插件 chestlock时使用
+#这个插件会让箱子自动上锁，为了防止loot被上锁 设置SetChestsAsUnlockable = true就行了
+SetChestsAsUnlockable: true
+
+
+#设置为true以后 你配置里填的金币数量实际会在游戏中除以100
+#例如你配置里设置随机掉落100-1275金币，但是游戏中会变成掉落 1.00-12.75 金币
+DivideMoneyAmountBy100: false
+
+#如果autoloot = true 将下方设置为ture可以播放音效
+PlaySoundOnAutoLoot: true
+
+#如果AutoBreakOnPunch = true 将下方设置为ture可以播放音效
+PlaySoundOnChestBreak: true
+
+#如果BreakAndRespawn = true 将下方设置为ture可以播放音效
+UseBreakAndRespawn: true
+
+
+#如果设置为true 物品将在loot箱内随机分布(而不是按顺序从左上角依次向右排序好)
+ShuffleLoot: false
+
+
+#如果设置为true 当有几率刷新的物品堆叠大于1时，会有额外重复几率再次尝试刷新该物品
+#例如某loot有70%几率刷新4-10个苹果 第一次时刷出了5个苹果(假设此事件几率70%)
+#当你设置下方的为true后 插件会再次尝试刷新苹果 不过到底是又成功刷新出4-10个苹果(假设此事件几率70%)
+#还是在另外的30%几率的区间里没有刷新出苹果来 就又是随机事件了
+AllowDuplicateItemsFromCollections: false
+
+
+#单位：秒
+#不建议修改 不建议修改 不建议修改
+#这是每个loot刷新后在内存中持续保存的时间
+#修改本项可能会导致不必要的卡顿
+ForgetInventoryTime: 60
+
+
+#译者：请谨慎设置为true(除非你真的希望启用这个功能)
+#如果 被设置为global的全局掠夺模式 且 不会再次自动刷新的 loot 链接到了一个箱子上
+#在这个箱子被掠夺后，loot会直接从箱子上解除链接(unlink)，恢复为普通箱子
+UnlinkGlobalChestsThatNeverReset: false
+
+
+#将此设置为true后  '/loot give' 以及 '/loot <PhatLoot>' 两个直接获取loot箱的指令也会被设置的冷却影响
+ApplyCooldownToCommandLoot: false
+
+
+#单位：分
+#在这里设置服务器自动保存loot刷新时间的频率
+#如果设置为0，则只有在服务器关闭时才会保存loot刷新剩余时间。
+#仅在您担心在服务器崩溃会丢失数据时才需要设置此选项
+#如果设置的数值低于30，服务器会有少量滞后 //仅译者测试
+AutoSavePeriod: 1440
+
+
+#只会影响设置为 GlobalReset = true [并同时设置] BreakAndRespawn = true 的loot箱子
+#如果设置为true 所有满足上方条件的loot都可以通过左键轻击鼠标来击破箱子
+#里面的东西会掉落在箱子的坐标上(前提是箱子下面有方块)，比撸爆箱子喷物品的范围稍微小一点
+AutoBreakOnPunch: false
