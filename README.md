@@ -2,7 +2,6 @@
 插件原作者：Codisimus 
 插件重置者：极光creeper 
 重置内容： 仅对中国用户的服务器核心兼容问题进行修复 
-          我会保持增加后续可能的版本支持
 
 PhatLoots is a Bukkit plugin that allows a server admin to setup 'Loot Tables' that give Players Items, money, exp, etc. in the following scenarios:
 
